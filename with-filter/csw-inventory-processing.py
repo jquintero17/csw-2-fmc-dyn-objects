@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 from textwrap import indent
 from tetpyclient import RestClient
 from json import loads, dumps
