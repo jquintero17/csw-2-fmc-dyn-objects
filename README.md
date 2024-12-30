@@ -11,11 +11,11 @@ fmc-dynobjects-push.py
 Before running these scripts, ensure you have the following dependencies installed:
 
 Python 3.x
-* **requests
-* **pandas
-* **argparse
-* **tqdm
-* **tetpyclient
+* requests
+* pandas
+* argparse
+* tqdm
+* tetpyclient
 Additionally, you may need other dependencies for logging or JSON operations, which are built-in or installed with the above packages.
 
 
@@ -35,7 +35,9 @@ Arguments:
 <scope_name>: The Root Scope. This is the tenant name for SaaS clusters. For on-prem, this might be "Default", "Root" or the tenant name in use.
 
 This is an example of the script being executed in background with a SaaS tenant named "csw-sbg" and using prefix inventory filter of "csw-fmc"
- python3 csw-inventory-pulling.py csw-sbg.tetrationcloud.com csw-fmc csw-sbg & 
+```
+python3 csw-inventory-pulling.py csw-sbg.tetrationcloud.com csw-fmc csw-sbg &
+```
 
 
 
@@ -53,7 +55,9 @@ Arguments:
 <prefix_filter>: A filter prefix to select specific dynamic object names.
 
 This is an example of the script being executed in background with prefix csw-fmc
+```
 python3 fmc-testing-3.py csw-fmc-api SuperSecretPassword 192.168.1.1 csw-fmc &
+```
 
 
 ## Files Generated
