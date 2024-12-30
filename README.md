@@ -22,7 +22,7 @@ Additionally, you may need other dependencies for logging or JSON operations, wh
 
 ## Usage
 
-First run script csw-inventory-processing.py to generate the neccesary files (e.g csw_inventory_processing_dynamic_objects_mapping.json:) for consumption by script fmc-dynobjects-push.py
+First run script csw-inventory-processing.py to generate the neccesary files (e.g csw_inventory_processing_dynamic_objects_mapping.json) for consumption by script fmc-dynobjects-push.py
 
 ### csw-inventory-processing.py
 This script is used to fetch data from CSW (Cisco Secure Workload) filters and process the inventory information.
@@ -64,13 +64,13 @@ python3 fmc-testing-3.py csw-fmc-api SuperSecretPassword 192.168.1.1 csw-fmc &
 ## Files Generated
 
 ### By csw-inventory-processing.py:
-inventory_result.csv: Contains the raw data from the inventory search.
-processed_inventory_result.csv: The processed CSV output showing mappings.
-csw_inventory_processing_dynamic_objects_mapping.json: A JSON file representation of dynamic objects ready for synchronization.
+* inventory_result.csv: Contains the raw data from the inventory search.
+* processed_inventory_result.csv: The processed CSV output showing mappings.
+* csw_inventory_processing_dynamic_objects_mapping.json: A JSON file representation of dynamic objects ready for synchronization.
 
 ### By fmc-dynobjects-push.py:
-fmc_dynamic_objects_mappings_pushed.json: Shows JSON data with dynamic object mappings after modifications like additions or removals.
-fmc-dyn-objects-sync.log: A log file capturing the operations and actions taken by the script.
+* fmc_dynamic_objects_mappings_pushed.json: Shows JSON data with dynamic object mappings after modifications like additions or removals.
+* fmc-dyn-objects-sync.log: A log file capturing the operations and actions taken by the script.
 
 ## Logging
 Both scripts offer debug logging capabilities, which can be enabled or disabled by adjusting the DEBUG_ENABLED and debug_mode flags respectively in each script.
