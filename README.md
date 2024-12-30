@@ -11,11 +11,11 @@ fmc-dynobjects-push.py
 Before running these scripts, ensure you have the following dependencies installed:
 
 Python 3.x
-requests
-pandas
-argparse
-tqdm
-tetpyclient
+* **requests
+* **pandas
+* **argparse
+* **tqdm
+* **tetpyclient
 Additionally, you may need other dependencies for logging or JSON operations, which are built-in or installed with the above packages.
 
 
@@ -25,8 +25,9 @@ First run script csw-inventory-processing.py to generate the neccesary files (e.
 
 ### csw-inventory-processing.py
 This script is used to fetch data from CSW (Cisco Secure Workload) filters and process the inventory information.
-
+```
 ./csw-inventory-processing.py <cluster> <filter_name> <scope_name>
+```
 
 Arguments:
 <cluster>: The cluster address of the CSW API. This is the URL of the SaaS Secure Workload Tenant or On-Prem Secure Workload Tenant
@@ -41,7 +42,9 @@ This is an example of the script being executed in background with a SaaS tenant
 ### fmc-dynobjects-push.py
 This script handles the synchronization of dynamic objects between the processed CSW (Cisco Secure Workload) inventory data and FMC (Firewall Management Center)
 
+```
 ./fmc-dynobjects-push.py <username> <password> <ip_address> <prefix_filter>
+```
 
 Arguments:
 <username>: API username for accessing the FMC.
