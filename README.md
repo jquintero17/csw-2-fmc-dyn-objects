@@ -16,6 +16,7 @@ Python 3.x
 * argparse
 * tqdm
 * tetpyclient
+
 Additionally, you may need other dependencies for logging or JSON operations, which are built-in or installed with the above packages.
 
 
