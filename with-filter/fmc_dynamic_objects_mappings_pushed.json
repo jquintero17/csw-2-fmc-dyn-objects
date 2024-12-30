@@ -1,0 +1,49 @@
+{
+    "add": [
+        {
+            "mappings": [
+                "172.20.0.123/32"
+            ],
+            "dynamicObject": {
+                "name": "csw-fmc-datacenter",
+                "type": "DynamicObject"
+            }
+        },
+        {
+            "mappings": [
+                "172.20.0.123/32",
+                "173.36.206.3/32"
+            ],
+            "dynamicObject": {
+                "name": "csw-fmc-org",
+                "type": "DynamicObject"
+            }
+        }
+    ],
+    "remove": [
+        {
+            "mappings": [
+                "192.168.10.255/32"
+            ],
+            "dynamicObject": {
+                "name": "csw-fmc-datacenter",
+                "type": "DynamicObject"
+            }
+        },
+        {
+            "mappings": [
+                "192.168.71.201/32",
+                "192.168.10.255/32",
+                "172.20.11.254/32",
+                "192.168.1.255/32",
+                "192.168.12.31/32",
+                "10.100.2.2/32",
+                "192.168.73.4/32"
+            ],
+            "dynamicObject": {
+                "name": "csw-fmc-org",
+                "type": "DynamicObject"
+            }
+        }
+    ]
+}
