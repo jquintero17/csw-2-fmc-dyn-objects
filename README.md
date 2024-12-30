@@ -3,8 +3,8 @@ This repo contains scripts to easily pull and process Secure Workload inventory 
 
 This project consists of two main Python scripts designed for processing inventory data from CSW and interacting with FMC dynamic objects. The scripts are:
 
-csw-inventory-processing.py
-fmc-dynobjects-push.py
+* csw-inventory-processing.py
+* fmc-dynobjects-push.py
 
 
 ## Dependencies
