@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-<<<<<<< HEAD
-=======
 
->>>>>>> 7168aa9 (First commit to add files and scripts)
 from textwrap import indent
 from tetpyclient import RestClient
 from json import loads, dumps
@@ -19,17 +16,13 @@ disable_warnings()
 
 log_file = "csw-inventory.log"
 
-DEBUG_ENABLED = False  # Change to False to disable logging. Change to True to enable logging
+DEBUG_ENABLED = False # Change to False to disable logging. Change to True to enable logging
 
 def timestamped_print(message):
     """Prints a message with a timestamp and logs it to the log file if debugging is enabled."""
     if DEBUG_ENABLED:
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-<<<<<<< HEAD
         log_message = f"{timestamp} - {message}"
-=======
-        log_message = f"***REMOVED***timestamp***REMOVED*** - ***REMOVED***message***REMOVED***"
->>>>>>> 7168aa9 (First commit to add files and scripts)
         with open(log_file, "a") as log:
             log.write(log_message + "\n")
 
@@ -38,11 +31,7 @@ def pagination(api_uri_path, method, **kwargs):
     try:
         response = method(api_uri_path, **kwargs)
         if response.status_code != 200:
-<<<<<<< HEAD
             timestamped_print(f"Error accessing {api_uri_path}: {response.status_code} - {response.text}")
-=======
-            timestamped_print(f"Error accessing ***REMOVED***api_uri_path***REMOVED***: ***REMOVED***response.status_code***REMOVED*** - ***REMOVED***response.text***REMOVED***")
->>>>>>> 7168aa9 (First commit to add files and scripts)
             return []
 
         # Initialize the tqdm progress bar with disable=True
@@ -56,11 +45,7 @@ def pagination(api_uri_path, method, **kwargs):
         elif isinstance(results, dict):
             if results.get('results'):
                 all_results += results['results']
-<<<<<<< HEAD
                 timestamped_print(f"Progress: Retrieved {len(all_results)} results from {api_uri_path}.")
-=======
-                timestamped_print(f"Progress: Retrieved ***REMOVED***len(all_results)***REMOVED*** results from ***REMOVED***api_uri_path***REMOVED***.")
->>>>>>> 7168aa9 (First commit to add files and scripts)
                 pbar.update()
                 while results.get("offset") and "post" in str(method.__func__):
                     next_page = results["offset"]
@@ -72,22 +57,14 @@ def pagination(api_uri_path, method, **kwargs):
                     results = response.json()
                     if results.get('results'):
                         all_results += results['results']
-<<<<<<< HEAD
                         timestamped_print(f"Progress: Retrieved {len(all_results)} results from {api_uri_path}.")
-=======
-                        timestamped_print(f"Progress: Retrieved ***REMOVED***len(all_results)***REMOVED*** results from ***REMOVED***api_uri_path***REMOVED***.")
->>>>>>> 7168aa9 (First commit to add files and scripts)
             pbar.close()
             return all_results
         else:
             pbar.close()
             return []
     except Exception as e:
-<<<<<<< HEAD
         timestamped_print(f"An error occurred in pagination: {e}")
-=======
-        timestamped_print(f"An error occurred in pagination: ***REMOVED***e***REMOVED***")
->>>>>>> 7168aa9 (First commit to add files and scripts)
         return []  # Return an empty list on error
 
 def hit_api(uri_path, method, **kwargs):
@@ -104,27 +81,16 @@ def hit_api(uri_path, method, **kwargs):
         else:
             return response
     except Exception as e:
-<<<<<<< HEAD
         timestamped_print(f"An error occurred while hitting the API: {e}")
-=======
-        timestamped_print(f"An error occurred while hitting the API: ***REMOVED***e***REMOVED***")
->>>>>>> 7168aa9 (First commit to add files and scripts)
         return []  # Return an empty list on error
 
 def read_and_process_csv(filename):
     # Read the CSV file
     df = pd.read_csv(filename)
-<<<<<<< HEAD
     timestamped_print(f"Loaded CSV file: {filename}")
 
     # Define the netmask to CIDR mapping
     netmask_to_cidr = {
-=======
-    timestamped_print(f"Loaded CSV file: ***REMOVED***filename***REMOVED***")
-
-    # Define the netmask to CIDR mapping
-    netmask_to_cidr = ***REMOVED***
->>>>>>> 7168aa9 (First commit to add files and scripts)
         '255.255.255.255': '/32',
         '255.255.255.254': '/31',
         '255.255.255.252': '/30',
@@ -158,11 +124,7 @@ def read_and_process_csv(filename):
         '192.0.0.0': '/2',
         '128.0.0.0': '/1',
         '0.0.0.0': '/0'
-<<<<<<< HEAD
     }
-=======
-    ***REMOVED***
->>>>>>> 7168aa9 (First commit to add files and scripts)
 
     # Process each row to create the mappings field
     def process_row(row):
@@ -172,11 +134,7 @@ def read_and_process_csv(filename):
         # Check if IP contains a CIDR
         if '/' in ip:
             ip, cidr = ip.split('/')
-<<<<<<< HEAD
             cidr = f'/{cidr}'
-=======
-            cidr = f'/***REMOVED***cidr***REMOVED***'
->>>>>>> 7168aa9 (First commit to add files and scripts)
         else:
             cidr = None
         
@@ -187,11 +145,7 @@ def read_and_process_csv(filename):
             netmask_cidr = netmask_to_cidr.get(netmask, '')
 
         # Create the mappings field
-<<<<<<< HEAD
         mappings = f"{ip}{netmask_cidr}"
-=======
-        mappings = f"***REMOVED***ip***REMOVED******REMOVED***netmask_cidr***REMOVED***"
->>>>>>> 7168aa9 (First commit to add files and scripts)
         return mappings
 
     # Apply the processing to create the mappings column
@@ -203,11 +157,7 @@ def read_and_process_csv(filename):
     # Save the modified dataframe to a new CSV file
     output_filename = "processed_inventory_result.csv"
     df.to_csv(output_filename, index=False)
-<<<<<<< HEAD
     timestamped_print(f"Processed data saved to {output_filename}")
-=======
-    timestamped_print(f"Processed data saved to ***REMOVED***output_filename***REMOVED***")
->>>>>>> 7168aa9 (First commit to add files and scripts)
 
     # Convert the dataframe to JSON format
     convert_to_json(df)
@@ -218,31 +168,18 @@ def convert_to_json(df):
 
     json_data = []
     for _, row in grouped.iterrows():
-<<<<<<< HEAD
         json_entry = {
             "name": row['filter_name'],
             "type": "DynamicObject",
             "objectType": "IP",
             "items": [{"mapping": mapping} for mapping in row['mappings']]
         }
-=======
-        json_entry = ***REMOVED***
-            "name": row['filter_name'],
-            "type": "DynamicObject",
-            "objectType": "IP",
-            "items": [***REMOVED***"mapping": mapping***REMOVED*** for mapping in row['mappings']]
-        ***REMOVED***
->>>>>>> 7168aa9 (First commit to add files and scripts)
         json_data.append(json_entry)
 
     output_json_filename = "csw_inventory_processing_dynamic_objects_mapping.json"
     with open(output_json_filename, 'w') as json_file:
         json.dump(json_data, json_file, indent=2)
-<<<<<<< HEAD
     timestamped_print(f"Processed JSON data saved to {output_json_filename}")
-=======
-    timestamped_print(f"Processed JSON data saved to ***REMOVED***output_json_filename***REMOVED***")
->>>>>>> 7168aa9 (First commit to add files and scripts)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()  # create parser
@@ -251,21 +188,13 @@ if __name__ == "__main__":
     parser.add_argument("scope_name")
     args = parser.parse_args()  # parse the arguments
 
-<<<<<<< HEAD
     api_endpoint = f"https://{args.cluster}"
-=======
-    api_endpoint = f"https://***REMOVED***args.cluster***REMOVED***"
->>>>>>> 7168aa9 (First commit to add files and scripts)
     api_credentials = f"api-csw.json"
 
     try:
         rc = RestClient(api_endpoint, credentials_file=api_credentials, verify=False)
     except Exception as e:
-<<<<<<< HEAD
         timestamped_print(f"Error initializing REST client: {e}")
-=======
-        timestamped_print(f"Error initializing REST client: ***REMOVED***e***REMOVED***")
->>>>>>> 7168aa9 (First commit to add files and scripts)
         exit(1)
 
     # Main loop to run the script every 30 seconds
@@ -283,17 +212,10 @@ if __name__ == "__main__":
                 if filter["name"].startswith(args.filter_name):
                     timestamped_print(filter["query"])
 
-<<<<<<< HEAD
                     req_payload = {
                         "filter": filter["query"],
                         "scopeName": args.scope_name
                     }
-=======
-                    req_payload = ***REMOVED***
-                        "filter": filter["query"],
-                        "scopeName": args.scope_name
-                    ***REMOVED***
->>>>>>> 7168aa9 (First commit to add files and scripts)
 
                     # Append inventory search result to the results list
                     result = hit_api("/inventory/search", rc.post, json_body=dumps(req_payload), pagination=True)
@@ -310,11 +232,7 @@ if __name__ == "__main__":
             if results:
                 df = pd.DataFrame(results)
                 filename = "inventory_result.csv"
-<<<<<<< HEAD
                 timestamped_print(f"Saving files to {filename}")
-=======
-                timestamped_print(f"Saving files to ***REMOVED***filename***REMOVED***")
->>>>>>> 7168aa9 (First commit to add files and scripts)
                 df.sort_values(by=['filter_name']).to_csv(filename, index=False)
             else:
                 timestamped_print("No results to save.")
@@ -323,7 +241,6 @@ if __name__ == "__main__":
             read_and_process_csv('inventory_result.csv')
 
         except Exception as global_error:
-<<<<<<< HEAD
             timestamped_print(f"An error occurred in the main loop: {global_error}")
 
         end_time = time.time()  # Track the end time of the iteration
@@ -333,14 +250,3 @@ if __name__ == "__main__":
         # Wait for 30 seconds before the next execution
         timestamped_print("Waiting for 30 seconds before the next execution...")
         time.sleep(30)  # Adjusted to 30
-=======
-            timestamped_print(f"An error occurred in the main loop: ***REMOVED***global_error***REMOVED***")
-
-        end_time = time.time()  # Track the end time of the iteration
-        iteration_time = end_time - start_time  # Calculate the time taken for the iteration
-        timestamped_print(f"Iteration completed in ***REMOVED***iteration_time:.2f***REMOVED*** seconds.")
-
-        # Wait for 30 seconds before the next execution
-        timestamped_print("Waiting for 30 seconds before the next execution...")
-        time.sleep(30)  # Adjusted to 30
->>>>>>> 7168aa9 (First commit to add files and scripts)
