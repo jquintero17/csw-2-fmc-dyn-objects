@@ -62,7 +62,7 @@ Arguments:
 
 This is an example of the script being executed in background with prefix csw-fmc
 ```
-python3 fmc-testing-3.py csw-fmc-api SuperSecretPassword 192.168.1.1 csw-fmc &
+python3 fmc-dynobjects-push.py  csw-fmc-api SuperSecretPassword 192.168.1.1 csw-fmc &
 ```
 
 
