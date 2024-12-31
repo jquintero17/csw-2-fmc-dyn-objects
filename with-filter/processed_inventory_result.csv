@@ -1,7 +1,11 @@
 filter_name,mappings
 csw-fmc-2,192.168.3.15/24
 csw-fmc-2,192.168.1.54/24
+<<<<<<< HEAD
 csw-fmc-2,192.168.11.104/24
+=======
+csw-fmc-2,192.168.1.104/24
+>>>>>>> 7168aa9 (First commit to add files and scripts)
 csw-fmc-2,192.168.1.6/24
 csw-fmc-2,192.168.4.4/32
 csw-fmc-2,192.168.1.20/24
