@@ -24,6 +24,11 @@ Additionally, you may need other dependencies for logging or JSON operations, wh
 
 First run script csw-inventory-processing.py to generate the neccesary files (e.g csw_inventory_processing_dynamic_objects_mapping.json) for consumption by script fmc-dynobjects-push.py
 
+Within the folder "with-filter" the script only searches for inventory filter objetcs with a pre-define prefix as input, and not all existing inventory filters in Secure Workload.
+
+![Alt Text](https://github.com/jquintero17/csw-2-fmc-dyn-objects/blob/main/usage_example.gif)
+
+
 ### csw-inventory-processing.py
 This script is used to fetch data from CSW (Cisco Secure Workload) filters and process the inventory information.
 ```
