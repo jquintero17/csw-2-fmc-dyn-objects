@@ -72,6 +72,7 @@ python3 fmc-testing-3.py csw-fmc-api SuperSecretPassword 192.168.1.1 csw-fmc &
 * inventory_result.csv: Contains the raw data from the inventory search.
 * processed_inventory_result.csv: The processed CSV output showing mappings.
 * csw_inventory_processing_dynamic_objects_mapping.json: A JSON file representation of dynamic objects ready for synchronization.
+* csw_inventory.log: log file capturing operations and actions taken by the script.
 
 ### By fmc-dynobjects-push.py:
 * fmc_dynamic_objects_mappings_pushed.json: Shows JSON data with dynamic object mappings after modifications like additions or removals.
