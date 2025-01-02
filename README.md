@@ -36,9 +36,9 @@ This script is used to fetch data from CSW (Cisco Secure Workload) filters and p
 ```
 
 Arguments:
-<cluster>: The cluster address of the CSW API. This is the URL of the SaaS Secure Workload Tenant or On-Prem Secure Workload Tenant
-<filter_name>: The filter name prefix to search for inventory filters. Only inventory filters with the prefix specificied will be pulled.
-<scope_name>: The Root Scope. This is the tenant name for SaaS clusters. For on-prem, this might be "Default", "Root" or the tenant name in use.
+* <cluster>: The cluster address of the CSW API. This is the URL of the SaaS Secure Workload Tenant or On-Prem Secure Workload Tenant
+* <filter_name>: The filter name prefix to search for inventory filters. Only inventory filters with the prefix specificied will be pulled.
+* <scope_name>: The Root Scope. This is the tenant name for SaaS clusters. For on-prem, this might be "Default", "Root" or the tenant name in use.
 
 This is an example of the script being executed in background with a SaaS tenant named "csw-sbg" and using prefix inventory filter of "csw-fmc"
 ```
@@ -55,10 +55,10 @@ This script handles the synchronization of dynamic objects between the processed
 ```
 
 Arguments:
-<username>: API username for accessing the FMC.
-<password>: Password for the API user.
-<ip_address>: IP address of the FMC.
-<prefix_filter>: A filter prefix to select specific dynamic object names.
+* <username>: API username for accessing the FMC.
+* <password>: Password for the API user.
+* <ip_address>: IP address of the FMC.
+* <prefix_filter>: A filter prefix to select specific dynamic object names.
 
 This is an example of the script being executed in background with prefix csw-fmc
 ```
