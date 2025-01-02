@@ -30,7 +30,7 @@ Within the folder "with-filter" the script only searches for inventory filter ob
 
 
 ### csw-inventory-processing.py
-This script is used to fetch data from CSW (Cisco Secure Workload) filters and process the inventory information.
+This script is used to fetch data from CSW (Cisco Secure Workload) filters and process the inventory information. By default it assumes the API key credentials file is within the same directory with name "api-csw.json".
 ```
 ./csw-inventory-processing.py <cluster> <filter_name> <scope_name>
 ```
