@@ -1,0 +1,12 @@
+[
+  {
+    "name": "csw-fmc-vulnerable-automation-server",
+    "type": "DynamicObject",
+    "objectType": "IP",
+    "items": [
+      {
+        "mapping": "10.67.0.192/24"
+      }
+    ]
+  }
+]
