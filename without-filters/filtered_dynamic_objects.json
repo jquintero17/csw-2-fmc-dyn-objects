@@ -1,0 +1,226 @@
+[
+    {
+        "id": "00505699-F25C-0ed3-0000-022266014895",
+        "name": "csw-fmc-AD-DNS",
+        "type": "DynamicObject",
+        "objectType": "IP",
+        "links": {
+            "self": "https://10.67.0.14/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/dynamicobjects/00505699-F25C-0ed3-0000-022266014895"
+        }
+    },
+    {
+        "id": "00505699-F25C-0ed3-0000-022266014899",
+        "name": "csw-fmc-aks-nodepool",
+        "type": "DynamicObject",
+        "objectType": "IP",
+        "links": {
+            "self": "https://10.67.0.14/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/dynamicobjects/00505699-F25C-0ed3-0000-022266014899"
+        }
+    },
+    {
+        "id": "00505699-F25C-0ed3-0000-022266014882",
+        "name": "csw-fmc-Any-IPV4",
+        "type": "DynamicObject",
+        "objectType": "IP",
+        "links": {
+            "self": "https://10.67.0.14/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/dynamicobjects/00505699-F25C-0ed3-0000-022266014882"
+        }
+    },
+    {
+        "id": "00505699-F25C-0ed3-0000-022266014898",
+        "name": "csw-fmc-app",
+        "type": "DynamicObject",
+        "objectType": "IP",
+        "links": {
+            "self": "https://10.67.0.14/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/dynamicobjects/00505699-F25C-0ed3-0000-022266014898"
+        }
+    },
+    {
+        "id": "00505699-F25C-0ed3-0000-022266014887",
+        "name": "csw-fmc-aws-vpc-dns",
+        "type": "DynamicObject",
+        "objectType": "IP",
+        "links": {
+            "self": "https://10.67.0.14/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/dynamicobjects/00505699-F25C-0ed3-0000-022266014887"
+        }
+    },
+    {
+        "id": "00505699-F25C-0ed3-0000-022266014892",
+        "name": "csw-fmc-backend",
+        "type": "DynamicObject",
+        "objectType": "IP",
+        "links": {
+            "self": "https://10.67.0.14/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/dynamicobjects/00505699-F25C-0ed3-0000-022266014892"
+        }
+    },
+    {
+        "id": "00505699-F25C-0ed3-0000-022266014889",
+        "name": "csw-fmc-Contractors",
+        "type": "DynamicObject",
+        "objectType": "IP",
+        "links": {
+            "self": "https://10.67.0.14/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/dynamicobjects/00505699-F25C-0ed3-0000-022266014889"
+        }
+    },
+    {
+        "id": "00505699-F25C-0ed3-0000-022266014888",
+        "name": "csw-fmc-core-services",
+        "type": "DynamicObject",
+        "objectType": "IP",
+        "links": {
+            "self": "https://10.67.0.14/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/dynamicobjects/00505699-F25C-0ed3-0000-022266014888"
+        }
+    },
+    {
+        "id": "00505699-F25C-0ed3-0000-022266014879",
+        "name": "csw-fmc-csw-acme-users",
+        "type": "DynamicObject",
+        "objectType": "IP",
+        "links": {
+            "self": "https://10.67.0.14/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/dynamicobjects/00505699-F25C-0ed3-0000-022266014879"
+        }
+    },
+    {
+        "id": "00505699-F25C-0ed3-0000-022266014893",
+        "name": "csw-fmc-csw-fmc-vulnerable-automation-server",
+        "type": "DynamicObject",
+        "objectType": "IP",
+        "links": {
+            "self": "https://10.67.0.14/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/dynamicobjects/00505699-F25C-0ed3-0000-022266014893"
+        }
+    },
+    {
+        "id": "00505699-F25C-0ed3-0000-022266014900",
+        "name": "csw-fmc-csw-lab-domaincontroller",
+        "type": "DynamicObject",
+        "objectType": "IP",
+        "links": {
+            "self": "https://10.67.0.14/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/dynamicobjects/00505699-F25C-0ed3-0000-022266014900"
+        }
+    },
+    {
+        "id": "00505699-F25C-0ed3-0000-022266014896",
+        "name": "csw-fmc-db",
+        "type": "DynamicObject",
+        "objectType": "IP",
+        "links": {
+            "self": "https://10.67.0.14/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/dynamicobjects/00505699-F25C-0ed3-0000-022266014896"
+        }
+    },
+    {
+        "id": "00505699-F25C-0ed3-0000-022266014903",
+        "name": "csw-fmc-domain-controller",
+        "type": "DynamicObject",
+        "objectType": "IP",
+        "links": {
+            "self": "https://10.67.0.14/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/dynamicobjects/00505699-F25C-0ed3-0000-022266014903"
+        }
+    },
+    {
+        "id": "00505699-F25C-0ed3-0000-022266014877",
+        "name": "csw-fmc-frontend",
+        "type": "DynamicObject",
+        "objectType": "IP",
+        "links": {
+            "self": "https://10.67.0.14/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/dynamicobjects/00505699-F25C-0ed3-0000-022266014877"
+        }
+    },
+    {
+        "id": "00505699-F25C-0ed3-0000-022266014883",
+        "name": "csw-fmc-IoT-Cameras",
+        "type": "DynamicObject",
+        "objectType": "IP",
+        "links": {
+            "self": "https://10.67.0.14/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/dynamicobjects/00505699-F25C-0ed3-0000-022266014883"
+        }
+    },
+    {
+        "id": "00505699-F25C-0ed3-0000-022266014881",
+        "name": "csw-fmc-IT-Admins",
+        "type": "DynamicObject",
+        "objectType": "IP",
+        "links": {
+            "self": "https://10.67.0.14/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/dynamicobjects/00505699-F25C-0ed3-0000-022266014881"
+        }
+    },
+    {
+        "id": "00505699-F25C-0ed3-0000-022266014901",
+        "name": "csw-fmc-Jumphost-TS",
+        "type": "DynamicObject",
+        "objectType": "IP",
+        "links": {
+            "self": "https://10.67.0.14/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/dynamicobjects/00505699-F25C-0ed3-0000-022266014901"
+        }
+    },
+    {
+        "id": "00505699-F25C-0ed3-0000-022266014894",
+        "name": "csw-fmc-Malicious-Ramsomware",
+        "type": "DynamicObject",
+        "objectType": "IP",
+        "links": {
+            "self": "https://10.67.0.14/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/dynamicobjects/00505699-F25C-0ed3-0000-022266014894"
+        }
+    },
+    {
+        "id": "00505699-F25C-0ed3-0000-022266014886",
+        "name": "csw-fmc-NTP",
+        "type": "DynamicObject",
+        "objectType": "IP",
+        "links": {
+            "self": "https://10.67.0.14/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/dynamicobjects/00505699-F25C-0ed3-0000-022266014886"
+        }
+    },
+    {
+        "id": "00505699-F25C-0ed3-0000-022266014880",
+        "name": "csw-fmc-oc-client-vm",
+        "type": "DynamicObject",
+        "objectType": "IP",
+        "links": {
+            "self": "https://10.67.0.14/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/dynamicobjects/00505699-F25C-0ed3-0000-022266014880"
+        }
+    },
+    {
+        "id": "00505699-F25C-0ed3-0000-022266043602",
+        "name": "csw-fmc-quarantine-risky-vdi-workloads",
+        "type": "DynamicObject",
+        "objectType": "IP",
+        "links": {
+            "self": "https://10.67.0.14/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/dynamicobjects/00505699-F25C-0ed3-0000-022266043602"
+        }
+    },
+    {
+        "id": "00505699-F25C-0ed3-0000-022266014890",
+        "name": "csw-fmc-quarantined-workloads",
+        "type": "DynamicObject",
+        "objectType": "IP",
+        "links": {
+            "self": "https://10.67.0.14/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/dynamicobjects/00505699-F25C-0ed3-0000-022266014890"
+        }
+    },
+    {
+        "id": "00505699-F25C-0ed3-0000-022266014885",
+        "name": "csw-fmc-safe-workloads",
+        "type": "DynamicObject",
+        "objectType": "IP",
+        "links": {
+            "self": "https://10.67.0.14/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/dynamicobjects/00505699-F25C-0ed3-0000-022266014885"
+        }
+    },
+    {
+        "id": "00505699-F25C-0ed3-0000-022266014897",
+        "name": "csw-fmc-SNAT-F5",
+        "type": "DynamicObject",
+        "objectType": "IP",
+        "links": {
+            "self": "https://10.67.0.14/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/dynamicobjects/00505699-F25C-0ed3-0000-022266014897"
+        }
+    },
+    {
+        "id": "00505699-F25C-0ed3-0000-022266014902",
+        "name": "csw-fmc-vdi-pool",
+        "type": "DynamicObject",
+        "objectType": "IP",
+        "links": {
+            "self": "https://10.67.0.14/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/dynamicobjects/00505699-F25C-0ed3-0000-022266014902"
+        }
+    }
