@@ -174,6 +174,17 @@ def read_and_process_csv(filename):
     # Convert the dataframe to JSON format
     convert_to_json(df)
 
+def sanitize_name(name):
+    """
+    Sanitize the name to conform to the API requirements.
+    Replaces spaces with hyphens and removes invalid characters.
+    """
+    # Replace spaces with hyphens and remove invalid characters
+    sanitized_name = name.replace(" ", "-")  # Replace space with hyphen
+    # Allow only a-z, A-Z, 0-9, -, _
+    sanitized_name = ''.join(c if c.isalnum() or c in ['-', '_'] else '' for c in sanitized_name)
+    return sanitized_name
+
 def convert_to_json(df):
     """Convert DataFrame to JSON format."""
     grouped = df.groupby('filter_name')['mappings'].apply(list).reset_index()
@@ -181,7 +192,7 @@ def convert_to_json(df):
     json_data = []
     for _, row in grouped.iterrows():
         json_entry = {
-            "name": row['filter_name'],
+            "name": sanitize_name(row['filter_name']),  # Sanitize the name here
             "type": "DynamicObject",
             "objectType": "IP",
             "items": [{"mapping": mapping} for mapping in row['mappings'] if mapping]  # Filtering None mappings
