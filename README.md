@@ -20,8 +20,9 @@ Python 3.x
 Additionally, you may need other dependencies for logging or JSON operations, which are built-in or installed with the above packages.
 
 
-## Usage
+# Usage
 
+## With-Filter
 First run script csw-inventory-processing.py to generate the neccesary files (e.g csw_inventory_processing_dynamic_objects_mapping.json) for consumption by script fmc-dynobjects-push.py
 
 Within the folder "with-filter" the script only searches for inventory filter objetcs with a pre-define prefix as input, and not all existing inventory filters in Secure Workload.
@@ -64,7 +65,19 @@ This is an example of the script being executed in background with prefix csw-fm
 ```
 python3 fmc-dynobjects-push.py  csw-fmc-api SuperSecretPassword 192.168.1.1 csw-fmc &
 ```
+## Without-Filter
+First run script csw-all-inventory-processing.py to generate the neccesary files (e.g csw_inventory_processing_dynamic_objects_mapping.json) for consumption by script fmc-dynobjects-all-objects.py
 
+The main difference with this version is that there is no prefix filter specify, which means the csw-all-inventory-processing.py will fetch all inventory filters from Secure Workload to be pushed to FMC. A note to consider is that the prefix "csw-fmc" is hardcoded with this code to differentiate objects coming from Secure Workload.
+Note: Inventory Filters with Non-IP values are ignored.
+
+```
+./csw-all-inventory-processing.py <cluster> <scope_name>
+```
+
+```
+./fmc-dynobjects-all-objects.py <username> <password> <ip_address>
+```
 
 ## Files Generated
 
@@ -77,6 +90,7 @@ python3 fmc-dynobjects-push.py  csw-fmc-api SuperSecretPassword 192.168.1.1 csw-
 ### By fmc-dynobjects-push.py:
 * fmc_dynamic_objects_mappings_pushed.json: Shows JSON data with dynamic object mappings after modifications like additions or removals.
 * fmc-dyn-objects-sync.log: A log file capturing the operations and actions taken by the script.
+* filtered_dynamic_objects.json: file capturing the dynamic objects fetched from FMC.
 
 ## Logging
 Both scripts offer debug logging capabilities, which can be enabled or disabled by adjusting the DEBUG_ENABLED and debug_mode flags respectively in each script.
