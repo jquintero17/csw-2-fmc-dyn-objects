@@ -135,6 +135,18 @@ def normalize_ip(ip):
         return f"{ip}/32"
     return ip
 
+def sanitize_name(name):
+    """
+    Sanitize the name to conform to the API requirements.
+    Replaces spaces with hyphens and removes invalid characters.
+    """
+    # Replace spaces with hyphens and remove invalid characters
+    sanitized_name = name.replace(" ", "-")  # Replace space with hyphen
+    # Allow only a-z, A-Z, 0-9, -, _
+    sanitized_name = ''.join(c if c.isalnum() or c in ['-', '_'] else '' for c in sanitized_name)
+    
+    return sanitized_name
+
 def compare_and_sync(file_data, filtered_objects, fmcIP, current_header, added_names, removed_names):
     """Compares file data with filtered_objects and makes necessary API calls."""
     file_names = {obj['name'] for obj in file_data}
@@ -169,9 +181,11 @@ def compare_and_sync(file_data, filtered_objects, fmcIP, current_header, added_n
         for new_name in positive_diff_names:
             file_obj = next((obj for obj in file_data if obj['name'] == new_name), None)
             if file_obj:
-                timestamped_print(f"Adding new dynamic object: {new_name}")
+                # Sanitize the name before adding it to the payload
+                sanitized_name = sanitize_name(file_obj['name'])
+                timestamped_print(f"Adding new dynamic object: {sanitized_name}")
                 add_payload.append({
-                    "name": file_obj['name'],       
+                    "name": sanitized_name,
                     "type": "DynamicObject",         
                     "objectType": "IP",              
                     # Add any additional required fields here if needed
@@ -181,13 +195,14 @@ def compare_and_sync(file_data, filtered_objects, fmcIP, current_header, added_n
 
         # Attempt to add new objects
         if add_payload:  # Check if there are any objects to add
+            timestamped_print(f"Payload being sent for addition: {json.dumps(add_payload, indent=4)}")
             try:
                 response = requests.post(f"https://{fmcIP}{path}", headers=current_header, json=add_payload, verify=False)
                 response.raise_for_status()
                 timestamped_print(f"compare_and_sync: Successfully added objects: {add_payload}")
             except requests.exceptions.HTTPError as errh:
                 timestamped_print(f"HTTP error occurred during add: {errh}")
-                if response:
+                if response is not None:
                     timestamped_print(f"Response status code: {response.status_code}")  # Log the code
                     timestamped_print(f"Response content: {response.content.decode()}")  # Log the content of the error response
             except requests.exceptions.RequestException as err:
