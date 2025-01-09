@@ -85,9 +85,10 @@ def hit_api(uri_path, method, **kwargs):
         return []  # Return an empty list on error
 
 def read_and_process_csv(filename):
-    # Read the CSV file
-    df = pd.read_csv(filename)
+    # Read the CSV file with dtype as string to avoid mixed types warning
+    df = pd.read_csv(filename, dtype=str, low_memory=False)
     timestamped_print(f"Loaded CSV file: {filename}")
+    #timestamped_print(f"DataFrame preview:\n{df.head()}")  # Add this line
 
     # Define the netmask to CIDR mapping
     netmask_to_cidr = {
@@ -129,7 +130,18 @@ def read_and_process_csv(filename):
     # Process each row to create the mappings field
     def process_row(row):
         ip = row['ip']
+        if isinstance(ip, float) and pd.isna(ip):
+            return None  # Handle NaN IP
+        if not isinstance(ip, str):
+            timestamped_print(f"Invalid IP entry: {ip}")
+            return None
+
         netmask = row.get('netmask', '')
+        if isinstance(netmask, float) and pd.isna(netmask):
+            netmask = ''  # Handle NaN netmask
+        elif not isinstance(netmask, str):
+            timestamped_print(f"Invalid netmask entry: {netmask}")
+            netmask = ''  # Handle invalid netmask
 
         # Check if IP contains a CIDR
         if '/' in ip:
@@ -172,7 +184,7 @@ def convert_to_json(df):
             "name": row['filter_name'],
             "type": "DynamicObject",
             "objectType": "IP",
-            "items": [{"mapping": mapping} for mapping in row['mappings']]
+            "items": [{"mapping": mapping} for mapping in row['mappings'] if mapping]  # Filtering None mappings
         }
         json_data.append(json_entry)
 
@@ -204,13 +216,23 @@ if __name__ == "__main__":
 
         try:
             filters = hit_api("/filters/inventories", rc.get)
+            # Filter the filters based on the prefix
+            filtered_filters = [f for f in filters if f["name"].startswith(args.filter_name)]
+            # Count and log the number of filters retrieved
+            num_filtered_filters = len(filtered_filters)
+            timestamped_print(f"Retrieved {num_filtered_filters} inventory filters with prefix '{args.filter_name}'.")
+            # Check if there are any filtered filters
+            if num_filtered_filters == 0:
+                timestamped_print(f"No filters matched the prefix '{args.filter_name}'. Skipping processing.")
+            else:
+                 # Initialize the results list
+                results = []
+            
+            # Initialize a counter for ignored filters
+            ignored_filters_count = 0
 
-            # Initialize the results list
-            results = []
-
-            for filter in filters:
-                if filter["name"].startswith(args.filter_name):
-                    timestamped_print(filter["query"])
+            for filter in filtered_filters:
+                timestamped_print(filter["query"])
 
                     req_payload = {
                         "filter": filter["query"],
@@ -219,15 +241,40 @@ if __name__ == "__main__":
 
                     # Append inventory search result to the results list
                     result = hit_api("/inventory/search", rc.post, json_body=dumps(req_payload), pagination=True)
+               
+               
+                # Check the type and content of the result
+                #timestamped_print(f"Result type: {type(result)}")
+                #timestamped_print(f"Result content: {dumps(result, indent=2)}")
 
-                    # Add filter_name to each result
+                # Make sure to process the result only if it's a list
+                if isinstance(result, list):
+                    # Add filter_name to each result and count IP addresses
+                    num_ips = 0
                     for entry in result:
-                        entry['filter_name'] = filter["name"]
+                        if isinstance(entry, dict):  # Ensure each entry is a dictionary
+                            # Check IP field
+                            ip = entry.get('ip')
+                            if ip is None:
+                                ignored_filters_count += 1  # Increment ignored count
+                                continue  # Skip this entry
+                            entry['filter_name'] = filter["name"]
+                            # Increment the count of IPs if 'ip' field exists and is valid
+                            if 'ip' in entry and isinstance(entry['ip'], str):
+                                num_ips += 1
+                            else:
+                                #timestamped_print(f"IP field missing or invalid for entry: Processing")
+                                timestamped_print(f"IP field missing or invalid for entry: {entry}")
+                        else:
+                            timestamped_print(f"Unexpected entry type: {type(entry)}")                  
 
                     results.extend(result)  # Append the result to the list
-
-                    timestamped_print(dumps(result, indent=2))
-
+                    timestamped_print(f"Number of IP fields retrieved from filter '{filter['name']}': {num_ips}")
+                else:
+                    timestamped_print(f"Invalid result format: {type(result)}")
+            # After the loop, print how many filters were ignored
+            timestamped_print(f"Total inventories with no IP: {ignored_filters_count}")
+            
             # Save the accumulated results to a CSV file
             if results:
                 df = pd.DataFrame(results)
